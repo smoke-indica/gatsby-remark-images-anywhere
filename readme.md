@@ -103,7 +103,7 @@ Your projects need to have...
     createMarkup: ({ src, srcSet }) => `<img src="${src}" srcSet="${srcSet}" class="hey" />`
 
     /**
-     * @param {'lazy' | 'eager' | 'auto'} loading 
+     * @param {'lazy' | 'eager' | 'auto'} loading
      * Set the output markup's 'loading' attribute. Default: 'lazy'
      */
     loading: 'lazy',
@@ -115,14 +115,14 @@ Your projects need to have...
     backgroundColor: '#fff',
 
     /**
-     * @param {boolean} linkImagesToOriginal 
+     * @param {boolean} linkImagesToOriginal
      * If enabled, wraps the default markup with an <a> tag pointing to the original image.
      * Default: false
      */
     linkImagesToOriginal: true,
 
     /**
-     * @param {string | Function} wrapperStyle 
+     * @param {string | Function} wrapperStyle
      * Inject styles to the image wrapper.
      * Also accept a function that receives all image data as arguments, i.e
      * ({ aspectRatio, width, height }) => `padding-bottom: ${height/2}px;`
@@ -165,7 +165,7 @@ interface CreateMarkupArgs {
   srcSetWebp?: string;
   base64?: string;
   tracedSVG?: string;
-  
+
   // fixed, resize
   width?: number;
   height?: number;
