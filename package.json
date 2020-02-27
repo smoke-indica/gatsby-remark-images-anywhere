@@ -25,20 +25,20 @@
   },
   "homepage": "https://github.com/d4rekanguok/gatsby-remark-images-extra#readme",
   "devDependencies": {
-    "@types/fs-extra": "^8.0.0",
-    "gatsby": "^2.12.0",
-    "gatsby-plugin-sharp": "^2.2.7",
+    "@types/fs-extra": "^8.1.0",
+    "gatsby": "^2.19.22",
+    "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-source-filesystem": "^2.1.5",
-    "tap": "^14.9.2",
-    "typescript": "^3.5.3"
+    "tap": "^14.10.6",
+    "typescript": "^3.8.2"
   },
   "dependencies": {
-    "parse5": "^5.1.0",
+    "parse5": "^5.1.1",
     "unist-util-select": "^2.0.2"
   },
   "peerDependencies": {
-    "gatsby": "^2.12.0",
-    "gatsby-source-filesystem": "^2.0.0",
-    "gatsby-plugin-sharp": "^2.2.7"
+    "gatsby": "^2.19.22",
+    "gatsby-source-filesystem": "^2.1.48",
+    "gatsby-plugin-sharp": "^2.4.5"
   }
 }

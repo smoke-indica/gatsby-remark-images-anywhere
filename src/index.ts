@@ -41,10 +41,6 @@ const addImage = async (
 
   const { touchNode, createNode } = actions
 
-  // gatsby parent file node of this markdown node
-  const dirPath = getNode(markdownNode.parent).dir
-  const { directory } = store.getState().program
-
   const imgNodes: RemarkNode[] = select.selectAll('image[url]', mdast)
   const htmlImgNodes: RemarkNode[] = select
     .selectAll('html', mdast)
@@ -62,7 +58,6 @@ const addImage = async (
       alt: node.alt,
       originSrc: node.url,
       sharpMethod,
-      ...imageResult,
     }
     node.type = 'html'
     node.value = createMarkup(data, {

@@ -39,7 +39,7 @@ const handleWrapperStyle: HandleWrapperStyle = (wrapperStyle, data) => {
 
 type ProcessMarkup = (data: CreateMarkupArgs, options: MarkupOptions, input: string) => string
 const processMainImage: ProcessMarkup = (data, options) => {
-  const { srcSet, src, alt } = data
+  const { srcSet, alt, originalImg } = data
   const { loading } = options
 
   return `
@@ -47,7 +47,8 @@ const processMainImage: ProcessMarkup = (data, options) => {
       <source srcset="${srcSet}">
       <img
         class="${CLASS_IMAGE}"
-        src="${src}"
+        src="${originalImg}"
+        href="${originalImg}"
         srcset="${srcSet}"
         title="${alt}"
         alt="${alt}"
@@ -87,15 +88,15 @@ const processPlaceholder: ProcessMarkup = (data, options, input) => {
       ></div>
     `
     : ''
-  
+
   return markup + input
 }
 
 const processWrapper: ProcessMarkup = (data, options, input) => {
-  const { sharpMethod, aspectRatio, width, height } = data
+  const { sharpMethod } = data
   const { wrapperStyle } = options
   const processedWrapperStyle = handleWrapperStyle(wrapperStyle, data)
-  
+
   let markup = ''
 
   if (sharpMethod === 'fluid') {
@@ -107,18 +108,18 @@ const processWrapper: ProcessMarkup = (data, options, input) => {
       `,
       imagePadding: `
         width: 100%;
-        padding-bottom: ${100 / aspectRatio}%;
+        padding-bottom: 10px;
       `,
     };
 
     markup = `
       <div class="${CLASS_WRAPPER}" style="${styles.imageWrapper}">
-      
+
         ${comment('preserve the aspect ratio')}
           <div class="${CLASS_PADDING}" style="${
             styles.imagePadding
           }"></div>
-        
+
         ${input}
       </div>
     `
@@ -129,8 +130,6 @@ const processWrapper: ProcessMarkup = (data, options, input) => {
       position: relative;
       overflow: hidden;
       display: block;
-      width: ${width}px;
-      height: ${height}px;
       ${processedWrapperStyle}
     `
 
@@ -145,7 +144,7 @@ const processWrapper: ProcessMarkup = (data, options, input) => {
 }
 
 const processLinkToOriginal: ProcessMarkup = (data, options, input) => {
-  const { originalImg, src } = data
+  const { originalImg } = data
   const { linkImagesToOriginal } = options
 
   if (!linkImagesToOriginal) {
@@ -154,12 +153,12 @@ const processLinkToOriginal: ProcessMarkup = (data, options, input) => {
 
   // only fluid returns original image
   return  `
-    <a 
+    <a
       class="${CLASS_LINK}"
-      target="_blank" 
+      target="_blank"
       rel="noopener"
       style="display: block;"
-      href="${originalImg || src}"
+      href="${originalImg}"
     >${input}
     </a>`
 }

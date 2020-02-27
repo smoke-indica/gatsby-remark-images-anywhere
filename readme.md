@@ -158,8 +158,6 @@ interface CreateMarkupArgs {
   title?: string;
   alt?: string;
 
-  aspectRatio: number;
-  src: string;
   srcSet?: string;
   srcWebp?: string;
   srcSetWebp?: string;

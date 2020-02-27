@@ -9,20 +9,18 @@ export interface RemarkNode {
 }
 
 export interface Args extends NodePluginArgs {
-  markdownAST: RemarkNode; 
+  markdownAST: RemarkNode;
   markdownNode: Node;
   files: FileSystemNode[];
 }
 
 export interface SharpResult {
-  aspectRatio: number;
-  src: string;
   srcSet?: string;
   srcWebp?: string;
   srcSetWebp?: string;
   base64?: string;
   tracedSVG?: string;
-  
+
   // fixed, resize
   width?: number;
   height?: number;
