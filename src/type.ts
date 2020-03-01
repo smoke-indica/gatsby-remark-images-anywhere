@@ -1,7 +1,4 @@
 import { Node, NodePluginArgs } from 'gatsby'
-import { FileSystemNode } from 'gatsby-source-filesystem';
-
-type SharpMethod = 'fluid' | 'fixed' | 'resize';
 
 export interface RemarkNode {
   type: string;
@@ -11,51 +8,18 @@ export interface RemarkNode {
 export interface Args extends NodePluginArgs {
   markdownAST: RemarkNode;
   markdownNode: Node;
-  files: FileSystemNode[];
 }
 
-export interface SharpResult {
-  srcSet?: string;
-  srcWebp?: string;
-  srcSetWebp?: string;
-  base64?: string;
-  tracedSVG?: string;
-
-  // fixed, resize
-  width?: number;
-  height?: number;
-
-  // fluid
-  presentationHeight?: number;
-  presentationWidth?: number;
-  sizes?: string;
-  originalImg?: string;
-}
-
-
-export interface CreateMarkupArgs extends SharpResult {
-  sharpMethod: SharpMethod;
-  originSrc: string;
+export interface CreateMarkupArgs {
   title?: string;
   alt?: string;
+  src?: string;
 }
 
-export interface MarkupOptions {
-  loading: 'lazy' | 'eager' | 'auto';
-  linkImagesToOriginal: boolean;
-  showCaptions: boolean;
-  wrapperStyle: string | Function;
-  backgroundColor: string;
-  tracedSVG: boolean | Object;
-  blurUp: boolean;
-}
+export type CreateMarkup = (args: CreateMarkupArgs) => string;
 
-export type CreateMarkup = (args: CreateMarkupArgs, options?: MarkupOptions) => string;
-
-export interface Options extends Partial<MarkupOptions> {
+export interface Options {
   plugins: unknown[];
-  staticDir?: string;
   createMarkup?: CreateMarkup;
-  sharpMethod: SharpMethod;
   [key: string]: unknown;
 }

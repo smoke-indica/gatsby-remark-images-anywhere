@@ -26,18 +26,19 @@
   "homepage": "https://github.com/d4rekanguok/gatsby-remark-images-extra#readme",
   "devDependencies": {
     "@types/fs-extra": "^8.1.0",
-    "gatsby": "^2.19.22",
+    "gatsby": "^2.19.23",
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-source-filesystem": "^2.1.5",
     "tap": "^14.10.6",
-    "typescript": "^3.8.2"
+    "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@types/unist": "^2.0.3",
     "parse5": "^5.1.1",
-    "unist-util-select": "^2.0.2"
+    "unist-util-select": "^3.0.1"
   },
   "peerDependencies": {
-    "gatsby": "^2.19.22",
+    "gatsby": "^2.19.23",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-plugin-sharp": "^2.4.5"
   }
